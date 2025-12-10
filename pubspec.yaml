@@ -1,0 +1,29 @@
+name: auth_module
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^17.0.0
+  ###
+  ### STRUCTURE
+  ###
+  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
+  flutter_bloc: ^9.1.1
+  get_it: ^9.0.5
+  firebase_core: ^4.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.10.2
+
+flutter:
+  uses-material-design: true
