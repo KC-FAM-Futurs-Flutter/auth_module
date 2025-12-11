@@ -14,11 +14,11 @@ class InitialPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           body: Center(child: CircularProgressIndicator()),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              locator<StartAppCubit>().login();
-            },
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {
+          //     locator<StartAppCubit>().signInAnonymously();
+          //   },
+          // ),
         );
       },
     );
