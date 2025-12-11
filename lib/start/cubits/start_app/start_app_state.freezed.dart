@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StartAppState {
 
- bool? get isLoged; String? get firebaseError;
+ bool? get isLoged; String? get firebaseError; ChargeState get chargeState;
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $StartAppStateCopyWith<StartAppState> get copyWith => _$StartAppStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StartAppState&&(identical(other.isLoged, isLoged) || other.isLoged == isLoged)&&(identical(other.firebaseError, firebaseError) || other.firebaseError == firebaseError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StartAppState&&(identical(other.isLoged, isLoged) || other.isLoged == isLoged)&&(identical(other.firebaseError, firebaseError) || other.firebaseError == firebaseError)&&(identical(other.chargeState, chargeState) || other.chargeState == chargeState));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoged,firebaseError);
+int get hashCode => Object.hash(runtimeType,isLoged,firebaseError,chargeState);
 
 @override
 String toString() {
-  return 'StartAppState(isLoged: $isLoged, firebaseError: $firebaseError)';
+  return 'StartAppState(isLoged: $isLoged, firebaseError: $firebaseError, chargeState: $chargeState)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $StartAppStateCopyWith<$Res>  {
   factory $StartAppStateCopyWith(StartAppState value, $Res Function(StartAppState) _then) = _$StartAppStateCopyWithImpl;
 @useResult
 $Res call({
- bool? isLoged, String? firebaseError
+ bool? isLoged, String? firebaseError, ChargeState chargeState
 });
 
 
@@ -62,11 +62,12 @@ class _$StartAppStateCopyWithImpl<$Res>
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoged = freezed,Object? firebaseError = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoged = freezed,Object? firebaseError = freezed,Object? chargeState = null,}) {
   return _then(_self.copyWith(
 isLoged: freezed == isLoged ? _self.isLoged : isLoged // ignore: cast_nullable_to_non_nullable
 as bool?,firebaseError: freezed == firebaseError ? _self.firebaseError : firebaseError // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,chargeState: null == chargeState ? _self.chargeState : chargeState // ignore: cast_nullable_to_non_nullable
+as ChargeState,
   ));
 }
 
@@ -151,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isLoged,  String? firebaseError)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? isLoged,  String? firebaseError,  ChargeState chargeState)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StartAppState() when $default != null:
-return $default(_that.isLoged,_that.firebaseError);case _:
+return $default(_that.isLoged,_that.firebaseError,_that.chargeState);case _:
   return orElse();
 
 }
@@ -172,10 +173,10 @@ return $default(_that.isLoged,_that.firebaseError);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isLoged,  String? firebaseError)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? isLoged,  String? firebaseError,  ChargeState chargeState)  $default,) {final _that = this;
 switch (_that) {
 case _StartAppState():
-return $default(_that.isLoged,_that.firebaseError);case _:
+return $default(_that.isLoged,_that.firebaseError,_that.chargeState);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +193,10 @@ return $default(_that.isLoged,_that.firebaseError);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isLoged,  String? firebaseError)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? isLoged,  String? firebaseError,  ChargeState chargeState)?  $default,) {final _that = this;
 switch (_that) {
 case _StartAppState() when $default != null:
-return $default(_that.isLoged,_that.firebaseError);case _:
+return $default(_that.isLoged,_that.firebaseError,_that.chargeState);case _:
   return null;
 
 }
@@ -207,11 +208,12 @@ return $default(_that.isLoged,_that.firebaseError);case _:
 
 
 class _StartAppState implements StartAppState {
-  const _StartAppState({this.isLoged = null, this.firebaseError = null});
+  const _StartAppState({this.isLoged = null, this.firebaseError = null, this.chargeState = ChargeState.initial});
   
 
 @override@JsonKey() final  bool? isLoged;
 @override@JsonKey() final  String? firebaseError;
+@override@JsonKey() final  ChargeState chargeState;
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +225,16 @@ _$StartAppStateCopyWith<_StartAppState> get copyWith => __$StartAppStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartAppState&&(identical(other.isLoged, isLoged) || other.isLoged == isLoged)&&(identical(other.firebaseError, firebaseError) || other.firebaseError == firebaseError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartAppState&&(identical(other.isLoged, isLoged) || other.isLoged == isLoged)&&(identical(other.firebaseError, firebaseError) || other.firebaseError == firebaseError)&&(identical(other.chargeState, chargeState) || other.chargeState == chargeState));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoged,firebaseError);
+int get hashCode => Object.hash(runtimeType,isLoged,firebaseError,chargeState);
 
 @override
 String toString() {
-  return 'StartAppState(isLoged: $isLoged, firebaseError: $firebaseError)';
+  return 'StartAppState(isLoged: $isLoged, firebaseError: $firebaseError, chargeState: $chargeState)';
 }
 
 
@@ -243,7 +245,7 @@ abstract mixin class _$StartAppStateCopyWith<$Res> implements $StartAppStateCopy
   factory _$StartAppStateCopyWith(_StartAppState value, $Res Function(_StartAppState) _then) = __$StartAppStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool? isLoged, String? firebaseError
+ bool? isLoged, String? firebaseError, ChargeState chargeState
 });
 
 
@@ -260,11 +262,12 @@ class __$StartAppStateCopyWithImpl<$Res>
 
 /// Create a copy of StartAppState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoged = freezed,Object? firebaseError = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoged = freezed,Object? firebaseError = freezed,Object? chargeState = null,}) {
   return _then(_StartAppState(
 isLoged: freezed == isLoged ? _self.isLoged : isLoged // ignore: cast_nullable_to_non_nullable
 as bool?,firebaseError: freezed == firebaseError ? _self.firebaseError : firebaseError // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,chargeState: null == chargeState ? _self.chargeState : chargeState // ignore: cast_nullable_to_non_nullable
+as ChargeState,
   ));
 }
 

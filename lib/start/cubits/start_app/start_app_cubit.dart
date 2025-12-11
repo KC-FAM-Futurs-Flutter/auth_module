@@ -28,12 +28,14 @@ class StartAppCubit extends Cubit<StartAppState> {
     required String email,
     required String password,
   }) async {
+    emit(state.copyWith(chargeState: ChargeState.loading));
     AuthResponse myResponse = await AuthFirebaseRepository()
         .loginWithEmailAndPassword(email: email, password: password);
     emit(
       state.copyWith(
         isLoged: myResponse.isLogged,
         firebaseError: myResponse.firebaseError,
+        chargeState: ChargeState.initial,
       ),
     );
   }
@@ -42,10 +44,12 @@ class StartAppCubit extends Cubit<StartAppState> {
     required String email,
     required String password,
   }) async {
+    emit(state.copyWith(chargeState: ChargeState.loading));
     AuthResponse myResponse = await AuthFirebaseRepository()
         .registerWithEmailAndPassword(email: email, password: password);
     emit(
       state.copyWith(
+        chargeState: ChargeState.initial,
         isLoged: myResponse.isLogged,
         firebaseError: myResponse.firebaseError,
       ),
