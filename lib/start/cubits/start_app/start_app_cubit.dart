@@ -23,4 +23,32 @@ class StartAppCubit extends Cubit<StartAppState> {
     await AuthFirebaseRepository().logOut();
     emit(state.copyWith(isLoged: false));
   }
+
+  void signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    AuthResponse myResponse = await AuthFirebaseRepository()
+        .loginWithEmailAndPassword(email: email, password: password);
+    emit(
+      state.copyWith(
+        isLoged: myResponse.isLogged,
+        firebaseError: myResponse.firebaseError,
+      ),
+    );
+  }
+
+  void registerWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    AuthResponse myResponse = await AuthFirebaseRepository()
+        .registerWithEmailAndPassword(email: email, password: password);
+    emit(
+      state.copyWith(
+        isLoged: myResponse.isLogged,
+        firebaseError: myResponse.firebaseError,
+      ),
+    );
+  }
 }

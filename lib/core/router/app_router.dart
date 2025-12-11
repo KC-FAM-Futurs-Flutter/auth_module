@@ -14,14 +14,32 @@ enum AppRoutes { init, welcome, login, register, home }
 
 final useBloc = locator<StartAppCubit>();
 
+final List<String> routesWithoutAuth = [
+  '/',
+  '/welcome',
+  '/welcome/login',
+  '/welcome/register',
+];
+
+final List<String> routesWithAuth = ['/home'];
+
 final goRouter = GoRouter(
   debugLogDiagnostics: true,
   refreshListenable: GoRouterRefreshStream(useBloc.stream),
   redirect: (context, state) {
-    if (useBloc.state.isLoged == true) {
+    print(state.uri.toString());
+    if (state.uri.toString() == '/' && useBloc.state.isLoged == true) {
       return '/home';
     }
-    if (useBloc.state.isLoged == false) {
+    if (state.uri.toString() == '/' && useBloc.state.isLoged == false) {
+      return '/welcome';
+    }
+    if (useBloc.state.isLoged == true &&
+        !routesWithAuth.contains(state.uri.toString())) {
+      return '/home';
+    }
+    if (useBloc.state.isLoged == false &&
+        !routesWithoutAuth.contains(state.uri.toString())) {
       return '/welcome';
     }
     return null;

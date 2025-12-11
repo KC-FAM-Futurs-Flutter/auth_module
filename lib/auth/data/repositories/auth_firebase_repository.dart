@@ -70,4 +70,76 @@ class AuthFirebaseRepository {
       return myResponse;
     }
   }
+
+  Future<AuthResponse> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      UserCredential myUserCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      User? myUser = myUserCredential.user;
+      final myResponse = AuthResponse(
+        authDto: AuthDto.fromFirebaseUser(myUser),
+        firebaseError: null,
+        catchError: null,
+        isLogged: true,
+      );
+      return myResponse;
+    } on FirebaseAuthException catch (e) {
+      final myResponse = AuthResponse(
+        authDto: null,
+        firebaseError: '$e',
+        catchError: null,
+        isLogged: false,
+      );
+      print('$e');
+      return myResponse;
+    } catch (e) {
+      final myResponse = AuthResponse(
+        authDto: null,
+        firebaseError: null,
+        catchError: '$e',
+        isLogged: false,
+      );
+      print('$e');
+      return myResponse;
+    }
+  }
+
+  Future<AuthResponse> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      UserCredential myUserCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      User? myUser = myUserCredential.user;
+      final myResponse = AuthResponse(
+        authDto: AuthDto.fromFirebaseUser(myUser),
+        firebaseError: null,
+        catchError: null,
+        isLogged: true,
+      );
+      return myResponse;
+    } on FirebaseAuthException catch (e) {
+      final myResponse = AuthResponse(
+        authDto: null,
+        firebaseError: '$e',
+        catchError: null,
+        isLogged: false,
+      );
+      print('$e');
+      return myResponse;
+    } catch (e) {
+      final myResponse = AuthResponse(
+        authDto: null,
+        firebaseError: null,
+        catchError: '$e',
+        isLogged: false,
+      );
+      print('$e');
+      return myResponse;
+    }
+  }
 }
